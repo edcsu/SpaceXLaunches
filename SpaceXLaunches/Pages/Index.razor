@@ -42,13 +42,22 @@ else
                         }
                         <MudCardContent>
                             <MudText Typo="Typo.h6">
-                                <b>Mission: </b>
-                                @launch.MissionName
-                            </MudText>
-                            <MudText Typo="Typo.h5">
                                 <b>LaunchYear: </b>
                                 @launch.LaunchYear
                             </MudText>
+                            @if (launch.Details is not null)
+                            {
+                                <MudText Typo="Typo.caption">
+                                    @launch.Details.Substring(0, 28)...
+                                </MudText>
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.caption">
+                                    No launch details
+                                </MudText>
+                            }
+                            
                         </MudCardContent>
                         <MudCardActions>
                             <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
