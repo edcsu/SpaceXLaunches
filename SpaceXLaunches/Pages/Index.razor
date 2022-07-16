@@ -2,109 +2,60 @@
 
 <PageTitle>Index</PageTitle>
 
-<MudGrid>
-    <MudItem xs="12" sm="6" md="6" lg="3">
-        <MudCard>
-            <MudCardHeader>
-                <CardHeaderAvatar>
-                    <MudAvatar Color="Color.Secondary">I</MudAvatar>
-                </CardHeaderAvatar>
-                <CardHeaderContent>
-                    <MudText Typo="Typo.body1">Space X</MudText>
-                    <MudText Typo="Typo.body2">In Galaxy</MudText>
-                </CardHeaderContent>
-                <CardHeaderActions>
-                    <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
-                </CardHeaderActions>
-            </MudCardHeader>
-            <MudCardMedia Image="images/sample1.jpg" Height="200" />
-            <MudCardContent>
-                <MudText Typo="Typo.h5">Old Paint</MudText>
-                <MudText Typo="Typo.body2">Old paint found on a stone house door.</MudText>
-                <MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-            </MudCardActions>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" sm="6" md="6" lg="3">
-        <MudCard>
-            <MudCardHeader>
-                <CardHeaderAvatar>
-                    <MudAvatar Color="Color.Secondary">I</MudAvatar>
-                </CardHeaderAvatar>
-                <CardHeaderContent>
-                    <MudText Typo="Typo.body1">Space X</MudText>
-                    <MudText Typo="Typo.body2">In Galaxy</MudText>
-                </CardHeaderContent>
-                <CardHeaderActions>
-                    <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
-                </CardHeaderActions>
-            </MudCardHeader>
-            <MudCardMedia Image="images/sample1.jpg" Height="200" />
-            <MudCardContent>
-                <MudText Typo="Typo.h5">Old Paint</MudText>
-                <MudText Typo="Typo.body2">Old paint found on a stone house door.</MudText>
-                <MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-            </MudCardActions>
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" sm="6" md="6" lg="3">
-        <MudCard>
-            <MudCardHeader>
-                <CardHeaderAvatar>
-                    <MudAvatar Color="Color.Secondary">I</MudAvatar>
-                </CardHeaderAvatar>
-                <CardHeaderContent>
-                    <MudText Typo="Typo.body1">Space X</MudText>
-                    <MudText Typo="Typo.body2">In Galaxy</MudText>
-                </CardHeaderContent>
-                <CardHeaderActions>
-                    <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
-                </CardHeaderActions>
-            </MudCardHeader>
-            <MudCardMedia Image="images/sample1.jpg" Height="200" />
-            <MudCardContent>
-                <MudText Typo="Typo.h5">Old Paint</MudText>
-                <MudText Typo="Typo.body2">Old paint found on a stone house door.</MudText>
-                <MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-            </MudCardActions>
-    </MudCard>
-    </MudItem>
-    <MudItem xs="12" sm="6" md="6" lg="3">
-        <MudCard>
-            <MudCardHeader>
-                <CardHeaderAvatar>
-                    <MudAvatar Color="Color.Secondary">I</MudAvatar>
-                </CardHeaderAvatar>
-                <CardHeaderContent>
-                    <MudText Typo="Typo.body1">Space X</MudText>
-                    <MudText Typo="Typo.body2">In Galaxy</MudText>
-                </CardHeaderContent>
-                <CardHeaderActions>
-                    <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
-                </CardHeaderActions>
-            </MudCardHeader>
-            <MudCardMedia Image="images/sample1.jpg" Height="200" />
-            <MudCardContent>
-                <MudText Typo="Typo.h5">Old Paint</MudText>
-                <MudText Typo="Typo.body2">Old paint found on a stone house door.</MudText>
-                <MudText Typo="Typo.body2">This photo was taken in a small village in Istra Croatia.</MudText>
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
-                <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-            </MudCardActions>
-        </MudCard>
-    </MudItem>
-</MudGrid>
+@if (launchDtos is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudGrid>
+        @foreach (var launch in launchDtos)
+        {
+            <MudItem xs="12" sm="6" md="6" lg="3">
+                    <MudCard>
+                        <MudCardHeader>
+                            <CardHeaderAvatar>
+                                @if (launch.Links.MissionPatchSmall is not null)
+                                {
+                                    <MudAvatar Image=@launch.Links.MissionPatchSmall.ToString()>I</MudAvatar>
+                                }
+                                else
+                                {
+                                    <MudAvatar Color="Color.Secondary">@launch.MissionName[0]</MudAvatar>
+                                }
+                            </CardHeaderAvatar>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.body1">@launch.MissionName</MudText>
+                                <MudText Typo="Typo.body2">@launch.LaunchSite.SiteName</MudText>
+                            </CardHeaderContent>
+                            <CardHeaderActions>
+                                <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
+                            </CardHeaderActions>
+                        </MudCardHeader>
+                        @if (launch.Links.MissionPatch is not null)
+                        {
+                            <MudCardMedia Image=@launch.Links.MissionPatch.ToString() Height="400" />
+                        }
+                        else
+                        {
+                            <MudCardMedia Image="images/sample1.jpg" Height="400" />
+                        }
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6">
+                                <b>Mission: </b>
+                                @launch.MissionName
+                            </MudText>
+                            <MudText Typo="Typo.h5">
+                                <b>LaunchYear: </b>
+                                @launch.LaunchYear
+                            </MudText>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+        }
+    </MudGrid>
+}

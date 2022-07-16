@@ -27,6 +27,9 @@ namespace SpaceXLaunches.Dtos
         [JsonPropertyName("launch_site")]
         public LaunchSite? LaunchSite { get; set; }
 
+        [JsonPropertyName("links")]
+        public Links? Links { get; set; }
+
         [JsonPropertyName("launch_success")]
         public bool? LaunchSuccess { get; set; }
 
