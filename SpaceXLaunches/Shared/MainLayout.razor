@@ -1,17 +1,21 @@
 ﻿@inherits LayoutComponentBase
+@inject IDialogService DialogService
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+<MudLayout>
+    <MudAppBar Elevation="0">
+        <MudText Typo="Typo.h5" Class="ml-3">SpaceX Launches</MudText>
+        <MudSpacer />
+    </MudAppBar>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="my-3 pt-3">
             @Body
-        </article>
-    </main>
-</div>
+        </MudContainer>
+        <MudScrollToTop>
+            <MudFab Color="Color.Tertiary" Icon="@Icons.Filled.ArrowCircleUp" />
+        </MudScrollToTop>
+    </MudMainContent>
+</MudLayout>
