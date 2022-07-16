@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IDialogService DialogService
 
 <PageTitle>Index</PageTitle>
 
@@ -57,11 +58,27 @@ else
                                     No launch details
                                 </MudText>
                             }
-                            
                         </MudCardContent>
                         <MudCardActions>
-                            <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
-                            <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
+                            <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="@(() => OpenLaunchDialog(launch))">Learn More</MudButton>
+                            @if (launch.Links.VideoLink is not null)
+                            {
+                                <MudTooltip Text="Watch on Youtube" Arrow="true" Color="Color.Success" Placement="Placement.Top">
+                                    <MudIconButton 
+                                        Href=@launch.Links.VideoLink.ToString()
+                                        Target="_blank"
+                                        Icon="@Icons.Custom.Brands.YouTube" 
+                                        Color="Color.Error" />
+                                </MudTooltip>
+                            }
+                            else
+                            {
+                                <MudTooltip Text="No Youtube link" Arrow="true" Color="Color.Default" Placement="Placement.Top">
+                                    <MudIconButton Disabled
+                                        Icon="@Icons.Custom.Brands.YouTube" 
+                                        Color="Color.Error" />
+                                </MudTooltip>
+                            }
                         </MudCardActions>
                     </MudCard>
                 </MudItem>

@@ -1,0 +1,59 @@
+﻿@using SpaceXLaunches.Dtos
+<MudDialog>
+    <DialogContent>
+        @if (model.Links.MissionPatch is not null)
+        {
+            <MudImage Src=@model.Links.MissionPatch.ToString() Width="500" Height="400" Alt="Mission patch" Elevation="25" Class="rounded-lg ma-4"/>
+        }
+        else
+        {
+            <MudImage Src="images/sample1.jpg" Width="200" Height="150" Alt="Mission patch" Elevation="25" Class="rounded-lg ma-4"/>
+        }
+        <MudText Class="" ><b>ID: </b>@model.Id</MudText>
+        @if (model.MissionId is not null)
+        {
+            <MudText><b>MissionId: </b>@model.MissionId[0]</MudText>
+
+        }
+        else
+        {
+            <MudText><b>Mission Id: </b>None</MudText>
+        }
+        <MudText><b>Mission name: </b>@model.MissionName</MudText>
+        <MudText><b>Site Id: </b>@model.LaunchSite.SiteId</MudText>
+        <MudText><b>Site name: </b>@model.LaunchSite.SiteName</MudText>
+        <MudText><b>Full site name: </b>@model.LaunchSite.SiteNameLong</MudText>
+        <MudText><b>Launch year: </b>@model.LaunchYear</MudText>
+        <MudText><b>Launch date local: </b>@model.LaunchDateLocal</MudText>
+        <MudText><b>Launch date Utc: </b>@model.LaunchDateUtc</MudText>
+        @if (model.Details is not null)
+        {
+            <MudText Typo="Typo.body1">
+                <b>Mission details: </b>
+                @model.Details
+            </MudText>
+        }
+        else
+        {
+            <MudText Typo="Typo.body1">
+                <b>Mission details: </b>
+                No launch details
+            </MudText>
+        }
+</DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] 
+    MudDialogInstance MudDialog { get; set; }
+
+	[Parameter] 
+	public LaunchDto model { get; set; }
+
+    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog.Cancel();
+}
