@@ -5,7 +5,7 @@
 
 @if (launchDtos is null)
 {
-    <p><em>Loading...</em></p>
+    <MudProgressCircular Indeterminate="true"></MudProgressCircular>
 }
 else
 {
@@ -13,7 +13,7 @@ else
         @foreach (var launch in launchDtos)
         {
             <MudItem xs="12" sm="6" md="6" lg="3">
-                    <MudCard>
+                    <MudCard Elevation="10">
                         <MudCardHeader>
                             <CardHeaderAvatar>
                                 @if (launch.Links.MissionPatchSmall is not null)
