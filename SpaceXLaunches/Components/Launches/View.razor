@@ -44,6 +44,16 @@
                     No launch details
                 </MudText>
             }
+            @if (model.Links.Presskit is not null)
+            {
+                <MudButton 
+                    Href=@model.Links.Presskit.ToString()
+                    Target="_blank"
+                    EndIcon="@Icons.Custom.FileFormats.FilePdf" 
+                    Color="Color.Error">
+                    Press kit
+                </MudButton>
+            }
         </MudContainer>
 </DialogContent>
     <DialogActions>
