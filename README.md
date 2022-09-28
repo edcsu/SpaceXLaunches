@@ -29,6 +29,11 @@ dotnet run
 * Github: [@edcsu](https://github.com/edcsu)
 * LinkedIn: [@Ssewannonda Keith](https://linkedin.com/in/ssewannonda-keith-edwin-443303129)
 
+## 📝 License
+
+Copyright © 2022 [Ssewannonda Keith Edwin](https://github.com/edcsu).<br />
+This project is [MIT](https://github.com/edcsu/SpaceXLaunches/blob/master/MIT-LICENSE.txt) licensed.
+
 ## Show your support
 
 Give a ⭐️ if this project helped you!
