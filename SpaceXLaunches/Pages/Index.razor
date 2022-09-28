@@ -5,7 +5,9 @@
 
 @if (launchDtos is null)
 {
-    <MudProgressCircular Indeterminate="true"></MudProgressCircular>
+    <MudPaper Elevation="0" Style="width:200px;margin-left:auto;margin-right:auto;">
+        <MudProgressCircular Color="Color.Primary" Style="height:200px;width:200px;" Indeterminate="true"></MudProgressCircular>
+    </MudPaper>
 }
 else
 {
